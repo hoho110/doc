@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataRecord dataTypeCode="book" dataTypeVersion="1" refDataSource="1" target="select id,title creator from book" unzip="false" >
+	<DataField name="bookid" exp="@id"/>
+	<DataField name="title" exp="Substring(@title,0,20)"/>
+	<DataField name="creator" outline="true" digitalObj="false" refDataSource="2" target="/#{bookid}/creator.xml" unzip="false">
+		<DataField name="creatorid" exp="@creator.id"/>
+		<DataField name="name" exp="@creator.name"/>
+	</DataField>
+	<DataField name="Cover" outline="true" digitalObj="true" refDataSource="3" target="/#{bookid}/cover/*.jpg" unzip="false">
+		<DataField name="creatorid" exp="@creator.id"/>
+		<DataField name="name" exp="@creator.name"/>
+	</DataField>
+</DataRecord>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+	<globalProperties>
+		<property name="dataTypeId" value="$init_dtype_002"/>
+		<property name="dataTypeCode" value="book"/>
+		<property name="dataTypeVersion" value="1"/>
+		<property name="encoding" value="utf-8"/>
+	</globalProperties>
+	<datasources>
+		<datasource id="" type="db"><!--数据获取方式 db/ftp/file/http-->
+			<adapter  mainClass=""  type="system"/>
+			<property name="" value=""/>
+			<property name="" value=""/>
+		</datasource>
+		<datasource id="" type="ftp">
+			<adapter  mainClass=""  type="system"/>
+			<property name="" value=""/>
+			<property name="" value=""/>
+		</datasource>
+	</datasources>
+	<workflowNodes>
+		<workflowNode name="get">
+			<adapter id="init-adp-001" mainClass="" code="" type="plugin"/>
+		</workflowNode>
+		
+		<workflowNode name="convert" dependOn="get">
+			<adapter id="init-adp-002" mainClass="" code="" type="plugin"/>
+			<import resource="convert.xml"/>
+		</workflowNode>
+		
+		<workflowNode name="check" dependOn="convert">
+			<adapter  mainClass="" type="system"/>
+		</workflowNode>
+		
+		<workflowNode name="write" dependOn="check">
+			<adapter mainClass="" type="system"/>
+		</workflowNode>					
+	</workflowNodes>
+</workflow>
