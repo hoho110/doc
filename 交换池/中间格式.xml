@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node name="一级节点" need="true" multiple="false" externalObj="true" dataObj="false" externalPath="/">
+	<node name="二级节点" need="false" multiple="true" externalObj="false" dataObj="false" externalPath="/"/>	
+</node>

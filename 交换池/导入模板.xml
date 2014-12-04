@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="***转入模板" dataTypeId="$dtype_002" dataTypeVersion="1">
+	<datasources>
+		<!--模板引用的数据源,数据获取方式 db/ftp/file/http,datasource即为adapter-->
+		<datasource id="$adapter_001" name="DB连接器"/>
+		<datasource id="$adapter_002" name="FTP连接器"/>
+	</datasources>
+	<node name="book" need="true" externalObj="true" dataObj="false" externalPath="/">
+		<!--来源配置,
+				type:来源类型，取值为0：指定数据源;1：上级对象;2:上级对象当前目录为相对目录
+				unzip:是否对获取数据解压
+				text:获取表达式
+		-->
+		<source type="0" refDataSourceId="$adapter_001" unzip="false">
+			<analysisAdapter id="$adapter_003">
+				<option name="" value=""/>
+			</analysisAdapter>
+			Select id,title,creator from book
+		</source>
+		<node name="bookid" need="true" multiple="false" externalObj="false" dataObj="false">
+			<convert>
+				<computeAdapter id="$adapter_004">
+					<option name="" value=""/>
+				</computeAdapter>
+				@id
+			</convert>
+		</node>
+	</node>
+</template>
